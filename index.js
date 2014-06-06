@@ -25,5 +25,16 @@ app.get('/movies', function(req, res){
 	res.json(movies);
 });
 
+app.post('/book', function(req, res){
+	var data = {
+		'qty' : req.body.qty,
+		'data' : req.body.date,
+		'id' : req.body.movie_id,
+		'name' : req.body.movie_name
+	};
+
+	bookings.push(data);
+	res.json(bookings);
+});
 app.listen(port);
 console.log('Express server running at http://localhost:' + port);

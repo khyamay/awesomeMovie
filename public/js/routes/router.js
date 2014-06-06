@@ -6,7 +6,10 @@ awesomeMovie.config(function($routeProvider){
 		}).when('/movie/:id', {
 			templateUrl: 'tmpl/movie.html',
 			controller: 'movieDetailCtrl'
+		}).when('/bookTickets/:id', {
+			templateUrl: 'tmpl/bookTickets.html',
+			controller: 'bookTicketsCtrl'
 		}).otherwise({
 			redirectTo: '/'
-		})
+		});
 });

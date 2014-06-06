@@ -23,3 +23,26 @@ awesomeMovie.controller("movieCtrl", function($scope, awesomeMovieFactory){
 awesomeMovie.controller("movieDetailCtrl", function($scope, $routeParams){
 	$scope.getMovieById($routeParams.id);
 });
+
+awesomeMovie.controller("bookTicketsCtrl", function($scope, $http, $location, $routeParams){
+    $scope.getMovieById($routeParams.id);
+    $scope.onlyNumbers= /^\d+$/;
+    $scope.formData={};
+    $scope.formData.movie_id = $scope.currMovie.id;
+    $scope.formData.movie_name = $scope.currMovie.name;
+    $scope.formData.data = "Today";
+    
+    $scope.processForm = function(){
+        console.log($scope.formData);
+        $http({
+            method: 'POST',
+            url: '/book',
+            data: $.param($scope.formData),
+            headers:{
+                'Content-Type':'application/x-www-form-urlencoded'
+            }
+        }).success(function(data){
+            console.log(data);
+        })
+    };
+});
