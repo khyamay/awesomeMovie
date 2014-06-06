@@ -9,5 +9,21 @@
  			</button>
  			<a href="#" class="navbar-brand">Awesome Movie</a>
  		</div>
+ 		<div class="collapse navbar-collapse">
+ 			<ul class="navbar-nav nav">
+ 				<li data-ng-class="{active:isActive('/')}">
+ 					<a href="#">Movies</a>
+ 				</li>
+ 				<li data-ng-class="{active:isActive('/bookings')}">
+ 					<a href="#/bookings">My Bookings</a>
+ 				</li>
+ 				<li data-ng-class="{active:isActivePath('/bookTickets')}" data-ng-show="isActivePath('/bookTickets')">
+ 					<a href="#/bookings">Book Tickets</a>
+ 				</li>
+ 				<li data-ng-class="{active:isActivePath('/movie')}" data-ng-show="isActivePath('/movie')">
+ 					<a href="#/bookings">Reviews</a>
+ 				</li>
+ 			</ul>
+ 		</div>
  	</div>
  </div>

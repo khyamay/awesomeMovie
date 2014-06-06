@@ -5,7 +5,7 @@ var express = require("express"),
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var app = express();
-
+var bookings = [];
 
 app.use(logger("dev"));
 app.use(bodyParser.json());
@@ -25,10 +25,14 @@ app.get('/movies', function(req, res){
 	res.json(movies);
 });
 
+app.get('/bookings', function(req, res){
+	res.json(bookings);
+})
+
 app.post('/book', function(req, res){
 	var data = {
 		'qty' : req.body.qty,
-		'data' : req.body.date,
+		'date' : req.body.date,
 		'id' : req.body.movie_id,
 		'name' : req.body.movie_name
 	};

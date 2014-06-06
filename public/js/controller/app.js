@@ -1,6 +1,5 @@
 awesomeMovie = angular.module("awesomeMovie", ['ngRoute', 'ngResource']);
-
-awesomeMovie.controller("movieCtrl", function($scope, awesomeMovieFactory){
+awesomeMovie.controller("movieCtrl", function($scope, awesomeMovieFactory, $location){
 	$scope.headerSrc = "tmpl/header.html";
 	$scope.movies = awesomeMovieFactory.query();
 
@@ -18,6 +17,19 @@ awesomeMovie.controller("movieCtrl", function($scope, awesomeMovieFactory){
 	$scope.back = function(){
 		window.history.back();
 	};
+
+    $scope.getCount = function(n){
+        return new Array(n);
+    }
+
+    $scope.isActive = function(route){
+        return route === $location.path();
+
+    }
+
+    $scope.isActivePath = function(route){
+        return ($location.path()).indexOf(route) >= 0;
+    }
 });
 
 awesomeMovie.controller("movieDetailCtrl", function($scope, $routeParams){
@@ -33,7 +45,6 @@ awesomeMovie.controller("bookTicketsCtrl", function($scope, $http, $location, $r
     $scope.formData.data = "Today";
     
     $scope.processForm = function(){
-        console.log($scope.formData);
         $http({
             method: 'POST',
             url: '/book',
@@ -42,7 +53,11 @@ awesomeMovie.controller("bookTicketsCtrl", function($scope, $http, $location, $r
                 'Content-Type':'application/x-www-form-urlencoded'
             }
         }).success(function(data){
-            console.log(data);
+            $location.path("/bookings");
         })
     };
+    
 });
+awesomeMovie.controller('bookingDetailsCtrl', function($scope, bookingFactory){
+        $scope.bookings = bookingFactory.query();
+    });
