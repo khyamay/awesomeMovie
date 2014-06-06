@@ -20,5 +20,10 @@ app.get('/', function(req, res){
 
 });
 
+app.get('/movies', function(req, res){
+	var movies = require('./data/movies.json');
+	res.json(movies);
+});
+
 app.listen(port);
 console.log('Express server running at http://localhost:' + port);
