@@ -4,6 +4,7 @@
 <head>
     <title>Awesome Movie Booking - Book Movie Tickets Online</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+     <link rel="stylesheet" type="text/css" href="css/app.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
    
 </head>
@@ -11,28 +12,16 @@
 <body class="container" data-ng-controller="movieCtrl">
    <div data-ng-include src="headerSrc"></div>
  	<hr/>
- 	<div class="row">
- 	<div class="col-xs-3">
- 		<h4>Tickets Available for:</h4>
- 	</div>
- 	<div class="col-xs-3">
- 		<input type="text" class="form-control" placeholder="Search a movie" data-ng-model="search">
- 	</div>
- 	</div>
- 	<br/>
-    <ul>
-    	<li data-ng-repeat="movie in movies | orderBy:'name':true | filter:search">
-    		{{movie.name | uppercase}} 
-			<a href="javascript:" data-ng-click="getMovieById(movie.id)">Avialability</a>
-    	</li>
-    </ul>
-    <br/>
-    <label data-ng-show="currMovie">Availability for {{currMovie.name}} is {{currMovie.availability}}</label>
+ 	<div data-ng-view=""></div>
+
  <script type="text/javascript" src="js/lib/angular.min.js"></script>
  <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
-  <script type="text/javascript" src="js/lib/jquery.min.js"></script>
-  <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/controller/app.js"></script>
+ <script type="text/javascript" src="js/lib/jquery.min.js"></script>
+ <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+ <script type="text/javascript" src="js/controller/app.js"></script>
+ <script type="text/javascript" src="js/routes/router.js"></script>
+
+
 
 </body>
 
