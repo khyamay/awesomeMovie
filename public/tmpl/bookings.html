@@ -1,0 +1,17 @@
+<table class="table-condensed table">
+	<thead><tr>
+		<th>Movie Name</th>
+		<th>Quantity</th>
+		<th>Date</th>
+	</tr></thead>
+	<tbody>
+		<tr data-ng-repeat="book in bookings">
+			<td>{{book.name}}</td>
+			<td>{{book.qty}}</td>
+			<td>{{book.date}}</td>
+		</tr>
+		<tr data-ng-show="bookings.length <= 0">
+			<td colspan="3" style="text-align:center;">You have not made any bookings yet!</td>
+		</tr>
+	</tbody>
+</table>
